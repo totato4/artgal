@@ -8,17 +8,21 @@ import { Icon } from '../../../shared/assets/svg/Icon';
 type props = {
   filter: string | boolean;
   children?: ReactNode;
+  filterValue?: any;
+  setFilterValue?: any;
 };
 
-export const RangeDropdownWrapper: FC<props> = ({ filter, children }) => {
+export const RangeDropdownWrapper: FC<props> = ({
+  filter,
+  children,
+  setFilterValue,
+  filterValue,
+}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filterValue, setFilterValue] = useState<
-    string | boolean | null | number
-  >(filter);
 
   const onChangeFilter = (name: string, id?: number, e?: any) => {
     setFilterValue(name);
@@ -57,6 +61,7 @@ export const RangeDropdownWrapper: FC<props> = ({ filter, children }) => {
       type="button"
       // className={`${open ? style.dropdownActive : style.dropdown}`}
       onClick={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       className={`  background input-border 
       ${open ? style.dropdownActive : style.dropdown}   `}
     >

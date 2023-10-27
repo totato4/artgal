@@ -21,10 +21,18 @@ export const RangeDropdownComponent: FC<props> = () => {
   const dropdownRef = useRef<HTMLButtonElement>(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
+  const [filterValue, setFilterValue] = useState<
+    string | boolean | null | number
+  >('created');
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <RangeDropdownWrapper filter={'created'}>
+    <RangeDropdownWrapper
+      filter={'created'}
+      filterValue={filterValue}
+      setFilterValue={setFilterValue}
+    >
       <Popup>
         <div className={style.popupWrapper}>
           <Input placeholder="for" value={startVal} setValue={setStartVal} />
