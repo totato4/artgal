@@ -1,0 +1,30 @@
+.svg {
+    fill: var(--color);
+    width: 41px;
+    height: 41px;
+    padding: 13px;
+}
+
+.svg-hover {
+    fill: var(--color);
+    width: 41px;
+    height: 41px;
+    padding: 13px;
+
+    &:hover {
+        fill: var(--color-hover)
+    }
+}
+
+.cross {
+    fill: #555555;
+    width: 8px;
+    height: 8px;
+}
+
+.arrow-top {
+    fill: white;
+    fill-opacity: 0.3;
+    width: 10px;
+    height: 6px;
+}

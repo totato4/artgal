@@ -1,0 +1,27 @@
+.header {
+    max-width: 1120px;
+    width: 100%;
+    padding: 35px 0 97px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    margin-right: auto;
+    user-select: none;
+}
+
+.frame {
+    width: 20px;
+    height: 20px;
+    
+}
+
+.frameWrapper {
+    user-select: none;
+    width: 20px;
+    height: 20px;
+}

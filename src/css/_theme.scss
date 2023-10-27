@@ -1,0 +1,116 @@
+:root {
+    // --size: 1rem;
+    // --color-primary: black;
+    // --background: #fff;
+    // --background-hover: #fff;
+    // --color: #000;
+    // --color-hover: #000;
+    // --border: 1px solid #000;
+    // --border-hover: 1px solid #000;
+    
+    // --input-border: #000;
+    // --on-hover: #000;
+}
+
+.iconColorWhite {
+    fill: #000;
+    width: 41px;
+    height: 41px;
+    padding: 13px;
+    &:hover {
+        fill: #fff;
+    }
+}
+
+.iconColorDark {
+    fill: white;
+    width: 41px;
+    height: 41px;
+    padding: 13px;
+    &:hover {
+        fill: black;
+    }
+}
+
+.iconDisabled {
+
+    width: 41px;
+    height: 41px;
+    padding: 13px;
+    fill-opacity: 0.3 ;
+
+}
+
+// [data-theme-fill="white"] {
+//     --fill: black;
+// }
+// [data-theme-fill="dark"] {
+//     --fill: white;
+// }
+
+// [data-theme-fill-hover="white"] {
+//     --fill-hover: white;
+// }
+
+// [data-theme-fill-hover="dark"] {
+//     --fill: black;
+// }
+
+[data-theme-color="white"] { --color: black; }
+[data-theme-color="dark"] { --color: white; }
+[data-theme-color-hover="white"] {
+    --color-hover: black;
+    &:hover {
+        --color-hover:white;
+    }
+}
+
+[data-theme-color-hover="dark"] {
+    --color-hover: white;
+    &:hover {
+        --color-hover: black;
+    }
+}
+
+[data-theme-background="white"] { --background: #fff; }
+[data-theme-background="dark"] { --background: black; }
+[data-theme-background-hover="dark"] {
+    --background-hover: black;
+    &:hover {
+        --background-hover: #fff;
+    }
+}
+
+[data-theme-background-hover="white"] {
+    --background-hover: #fff;
+    &:hover {
+        --background-hover: black;
+    }
+}
+
+[data-theme-border="white"] {
+    --border: 1px solid black;
+}
+
+[data-theme-border="dark"] {
+    --border: 1px solid #fff;
+}
+
+[data-theme-border-hover="white"] {
+    --border-hover: 1px solid black;
+    &:hover {
+        --border-hover: 1px solid black;
+    }
+}
+
+[data-theme-border-hover="dark"] {
+    --border-hover: 1px solid #fff;
+    &:hover {
+        --border-hover: 1px solid white;
+    }
+}
+
+[data-theme-input-border="white"] { --input-border: 1px solid rgba(0, 0, 0, 0.30);}
+[data-theme-input-border="dark"] { --input-border: 1px solid #FFF;}
+
+

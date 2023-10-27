@@ -1,0 +1,12 @@
+.btn {
+    width: 41px;
+    height: 41px;
+    transition-duration: 75ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverOff {
+    pointer-events: none;
+}

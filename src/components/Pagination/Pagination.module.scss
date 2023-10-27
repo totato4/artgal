@@ -1,0 +1,126 @@
+.pagination {
+    display: flex;
+
+    li>a {
+        margin: 0;
+        list-style: none;
+        max-width: 41px;
+        max-height: 41px;
+
+        display: flex;
+        padding: 21px;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+
+
+
+
+
+    }
+
+    ul {
+        display: flex;
+        margin: 0;
+    }
+}
+
+
+
+
+.btn {
+    li {
+        width: 41px;
+        height: 41px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+            /* 111.111% */
+            text-transform: uppercase;
+        
+    }
+    
+}
+
+.paginationThemeDark {
+    li:not(:last-child):not(:first-child) {
+            border: 1px solid #fff;
+            color: white;
+            
+            transition-duration: 100ms;
+            
+            &:hover {
+                color: black;
+                border: 1px solid white;
+                background-color: white;
+            }
+            
+        }
+}
+
+.paginationThemeWhite {
+    
+        li:not(:last-child):not(:first-child) {
+            border: 1px solid #000;
+            color: black;
+            transition: color border;
+            transition-duration: 100ms;
+            
+    
+            &:hover {
+                background-color: black;
+                color: white;
+                border: 1px solid black;
+            }
+            
+                        
+        }
+}
+
+
+.disabledWhite {
+    border: 1px solid rgba(0, 0, 0, 0.30) !important;
+
+    // &:hover {
+    //     color: inherit !important;
+    //     background-color: inherit !important;
+    // }
+}
+
+.disabledDark {
+    border: 1px solid rgba(255, 255, 255, 0.30) !important;
+
+    &:hover {
+        color: inherit !important;
+        background-color: inherit !important;
+    }
+}
+
+
+.activeWhite {
+    color: white !important;
+        border: 1px solid black !important;
+        background: black !important;
+}
+
+.activeDark {
+    color:#000 !important ;
+    border: 1px solid white !important;
+    background: white !important;
+}
+
+
+
+@media (min-width: 1250px) {
+    /* … */
+}

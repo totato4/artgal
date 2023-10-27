@@ -1,0 +1,26 @@
+.wrapper {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.30);
+  
+  max-width: 265px;
+  width: 100%;
+  height: 44px;
+  color:inherit;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 18px 0px 15px;
+}
+
+// .white {
+//   border: 1px solid rgba(0, 0, 0, 0.30);
+//   color: black;
+//   background: #fff;
+// }
+// .dark {
+//   border: 1px solid #FFF;
+//   background: #0C0C0C;
+//   color: white;
+// }
+
