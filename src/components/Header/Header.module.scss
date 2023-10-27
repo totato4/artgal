@@ -1,15 +1,16 @@
 .header {
     max-width: 1120px;
     width: 100%;
-    padding: 35px 0 97px;
+    padding: 12px 0 0px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 35px;
+    align-items: center;
+    margin-bottom: 34px;
 }
 
 .logo {
-    width: 64px;
-    height: 64px;
+    width: 67px;
+    height: 67px;
     margin-right: auto;
     user-select: none;
 }

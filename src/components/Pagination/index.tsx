@@ -74,12 +74,13 @@ const PaginationComponent = () => {
                 <Icon id="right-array" className="svg-hover" />
               </Button>
             }
-            pageRangeDisplayed={3}
+            pageRangeDisplayed={-3}
             pageCount={countPages}
             // initialPage={Number(page) - 1}
             // forcePage={Number(page) - 1}
             initialPage={currentPage - 1}
             forcePage={currentPage - 1}
+            renderOnZeroPageCount={null}
           />
 
           <div onClick={() => onChangePage(2)}>

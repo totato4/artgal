@@ -1,6 +1,8 @@
 .pagination {
     display: flex;
-
+    max-width: 100%;
+    justify-content: center;
+    
     li>a {
         margin: 0;
         list-style: none;
@@ -121,6 +123,10 @@
 
 
 
-@media (min-width: 1250px) {
+@media (max-width: 350px) {
+ 
+    .pagination {
+        scale: 0.8;
+    }
     /* … */
 }
