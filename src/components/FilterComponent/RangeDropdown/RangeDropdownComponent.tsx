@@ -6,6 +6,7 @@ import { RangeDropdownWrapper } from './RangeDropdownWrapper/RangeDropdownWrappe
 import { Input } from './Input/Input';
 import { Popup } from './Popup/Popup';
 import style from './RangeDropdownComponent.module.scss';
+import { useAppSelector } from '../../../RTK/store';
 
 type props = {
   filter?: string | boolean;
@@ -13,6 +14,7 @@ type props = {
 };
 
 export const RangeDropdownComponent: FC<props> = () => {
+  const { theme } = useAppSelector((state) => state.themeSlice);
   const [startVal, setStartVal] = useState('');
   const [endVal, setEndVal] = useState('');
   const [open, setOpen] = useState(false);
@@ -24,9 +26,16 @@ export const RangeDropdownComponent: FC<props> = () => {
   return (
     <RangeDropdownWrapper filter={'created'}>
       <Popup>
-        <div className={style.wrapper}>
+        <div className={style.popupWrapper}>
           <Input placeholder="for" value={startVal} setValue={setStartVal} />
-          <div className="" />
+          <div
+            className="line"
+            style={{
+              width: '12px',
+              height: '1px',
+              backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
+            }}
+          />
           <Input placeholder="before" value={endVal} setValue={setEndVal} />
         </div>
       </Popup>

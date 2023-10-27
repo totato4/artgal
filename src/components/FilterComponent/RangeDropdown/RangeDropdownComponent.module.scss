@@ -1,8 +1,9 @@
-.wrapper {
+.popupWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     width: 100%;
     overflow-x: hidden;
+    gap: 10px;
 }
