@@ -32,12 +32,8 @@ export const fetchItems = createAsyncThunk<any, paramsProps>(
       
     } else {
       
-      if (data.length < 12) {
-        dispatch(setCountPages(1))
-        dispatch(setCurrentPages(1))
-      } else {
-        dispatch(setCountPages(headers['x-total-count']))
-      }
+      dispatch(setCountPages(Math.ceil(headers['x-total-count']/12)))
+
       const authorId: number[] = [];
       await data.map((obj: any) => authorId.push(obj.authorId))
       const authorString = authorId.reduce((ac, cur) => ac + `id=${cur}&`, "")
