@@ -25,7 +25,20 @@ export const RangeDropdownComponent: FC<props> = () => {
     string | boolean | null | number
   >('created');
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // console.log('GTE', searchParams.get('gte'));
+
+  // useEffect(() => {
+  //   setSearchParams({ gte: startVal, lte: endVal });
+  //   if (searchParams.get('gte') == '') {
+  //     searchParams.delete('gte');
+  //     setSearchParams(searchParams);
+  //   }
+  //   if (searchParams.get('lte') == '') {
+  //     searchParams.delete('lte');
+  //     setSearchParams(searchParams);
+  //   }
+  // }, [searchParams, startVal, endVal]);
 
   return (
     <RangeDropdownWrapper
@@ -34,18 +47,26 @@ export const RangeDropdownComponent: FC<props> = () => {
       setFilterValue={setFilterValue}
     >
       <Popup>
-        <div className={style.popupWrapper}>
-          <Input placeholder="for" value={startVal} setValue={setStartVal} />
-          <div
-            className="line"
-            style={{
-              width: '12px',
-              height: '1px',
-              backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
-            }}
-          />
-          <Input placeholder="before" value={endVal} setValue={setEndVal} />
-        </div>
+        <Input
+          placeholder="for"
+          value={startVal}
+          setValue={setStartVal}
+          urlParam={'gte'}
+        />
+        <div
+          className="line"
+          style={{
+            width: '12px',
+            height: '1px',
+            backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
+          }}
+        />
+        <Input
+          placeholder="before"
+          value={endVal}
+          setValue={setEndVal}
+          urlParam={'lte'}
+        />
       </Popup>
     </RangeDropdownWrapper>
   );

@@ -1,0 +1,18 @@
+.item {
+    text-overflow: ellipsis;
+    max-width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+
+@media (min-width: 768px) {
+    .item {
+        max-width: 126px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .item {
+        max-width: 175px;
+    }
+}

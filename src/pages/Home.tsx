@@ -6,12 +6,11 @@ import { fetchItems } from '../RTK/asyncThunk/items';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../RTK/store';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
 
 const Home = () => {
   const { currentPage } = useAppSelector((state) => state.itemsSlice);
   const dispatch = useAppDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, _] = useSearchParams();
 
   useEffect(() => {
     dispatch(
@@ -19,8 +18,9 @@ const Home = () => {
         author: searchParams.get('author'),
         location: searchParams.get('location'),
         q: searchParams.get('q'),
-        created: searchParams.get('created'),
         page: currentPage,
+        gte: searchParams.get('gte'),
+        lte: searchParams.get('lte'),
       }),
     );
   }, [searchParams, currentPage]);

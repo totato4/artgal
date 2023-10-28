@@ -5,11 +5,12 @@ import { IitemsSliceState } from './types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 type paramsProps = {
-  created?: string | null;
   page?: string | null | number;
   author?: string | null;
   location?: string | null;
   q?: string | null;
+  gte?: string | null;
+  lte?: string | null;
 }
 
 // <IResponseProduct, Partial<paramsProps>>
@@ -18,15 +19,18 @@ export const fetchItems = createAsyncThunk<any, paramsProps>(
   `@items/fetchItems`,
 
   async (params, { fulfillWithValue, rejectWithValue, dispatch }) => {
-    const { author, created, location, page, q } = params;
+    const { author, location, page, q, gte, lte } = params;
     console.log(params)
     const authorLink = author !== null ? `authorId=${author}&` : "";
     const locationLink = location !== null ? `locationId=${location}&` : "";
-    const pageLink = page !== null ? `_page=${page}&_limit=12&` : "_page=1&_limit=12&";
     const qLink = q !== null ? `q=${q}&` : '';
+    const gteLink = gte !== null ? `created_gte=${gte}&` : "";
+    const lteLink = lte !== null ? `created_lte=${lte}&` : "";
+    const pageLink = page !== null ? `_page=${page}&_limit=12&` : "_page=1&_limit=12&";
     
-
-    const { data, status,headers } = await axios.get(`https://test-front.framework.team/paintings?${pageLink}${authorLink}${locationLink}${qLink}`)
+    
+    
+    const { data, status,headers } = await axios.get(`https://test-front.framework.team/paintings?${pageLink}${authorLink}${locationLink}${qLink}${gteLink}${lteLink}`)
     if (status < 200 || status >= 300) {
       return rejectWithValue(status)
       
