@@ -3,6 +3,7 @@ import { Status } from './types';
 import axios  from 'axios';
 import { IitemsSliceState } from './types';
 import { PayloadAction } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 
 type paramsProps = {
   page?: string | null | number;
@@ -20,7 +21,6 @@ export const fetchItems = createAsyncThunk<any, paramsProps>(
 
   async (params, { fulfillWithValue, rejectWithValue, dispatch }) => {
     const { author, location, page, q, gte, lte } = params;
-    console.log(params)
     const authorLink = author !== null ? `authorId=${author}&` : "";
     const locationLink = location !== null ? `locationId=${location}&` : "";
     const qLink = q !== null ? `q=${q}&` : '';
@@ -131,7 +131,15 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const {setCurrentPages, setCountPages} = itemsSlice.actions
+
+
+export const { setCurrentPages, setCountPages } = itemsSlice.actions;
+
+// const persistConfig = {
+//   key: 'items',
+//   storage: storage,
+//   blacklist: ['items', 'authorId', 'countPages', 'currentPage', 'status']
+// }
 
 
 export default itemsSlice.reducer;

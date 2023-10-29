@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, FC } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
 import { ReactNode } from 'react';
-import { RangeDropdownWrapper } from './RangeDropdownWrapper/RangeDropdownWrapper';
 import { Input } from './Input/Input';
 import { Popup } from './Popup/Popup';
 import style from './RangeDropdownComponent.module.scss';
 import { useAppSelector } from '../../../RTK/store';
+import { Icon } from '../../../components/shared/assets/svg/Icon';
 
 type props = {
   filter?: string | boolean;
@@ -20,10 +20,6 @@ export const RangeDropdownComponent: FC<props> = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
-
-  const [filterValue, setFilterValue] = useState<
-    string | boolean | null | number
-  >('created');
 
   // const [searchParams, setSearchParams] = useSearchParams();
   // console.log('GTE', searchParams.get('gte'));
@@ -39,35 +35,81 @@ export const RangeDropdownComponent: FC<props> = () => {
   //     setSearchParams(searchParams);
   //   }
   // }, [searchParams, startVal, endVal]);
+  useOnClickOutside(dropdownRef, () => setOpen(false));
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const onDeleteFilter = (e: any) => {
+    e.stopPropagation();
+    setEndVal('');
+    setStartVal('');
+    searchParams.delete(`${'gte'}`);
+    searchParams.delete(`${'lte'}`);
+    setSearchParams(searchParams);
+    setOpen(false);
+  };
 
   return (
-    <RangeDropdownWrapper
-      filter={'created'}
-      filterValue={filterValue}
-      setFilterValue={setFilterValue}
+    <button
+      ref={dropdownRef}
+      type="button"
+      // className={`${open ? style.dropdownActive : style.dropdown}`}
+      onClick={() => setOpen(true)}
+      className={`  background input-border 
+      ${open ? style.dropdownActive : style.dropdown}   `}
     >
-      <Popup>
-        <Input
-          placeholder="for"
-          value={startVal}
-          setValue={setStartVal}
-          urlParam={'gte'}
-        />
-        <div
-          className="line"
-          style={{
-            width: '12px',
-            height: '1px',
-            backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
-          }}
-        />
-        <Input
-          placeholder="before"
-          value={endVal}
-          setValue={setEndVal}
-          urlParam={'lte'}
-        />
-      </Popup>
-    </RangeDropdownWrapper>
+      <div className={style.button}>
+        <h3 className={`${style.dropdownName} color`}>
+          {startVal || endVal ? `${startVal} - ${endVal}` : 'Created'}
+        </h3>
+        <div className={style.dropdownArray}>
+          {startVal || endVal ? (
+            <div
+              style={{ padding: '4px' }}
+              onClick={(e) => {
+                onDeleteFilter(e);
+              }}
+            >
+              <Icon id="cross" className="cross" />
+            </div>
+          ) : (
+            ''
+          )}
+          {open ? (
+            <div style={{ rotate: '180deg' }}>
+              <Icon id="arrow-top" className="arrow-top" />
+            </div>
+          ) : (
+            <div>
+              <Icon id="arrow-top" className="arrow-top" />
+            </div>
+          )}
+        </div>
+      </div>
+      {open && (
+        <Popup>
+          <Input
+            placeholder="for"
+            value={startVal}
+            setValue={setStartVal}
+            urlParam={'gte'}
+          />
+          <div
+            className="line"
+            style={{
+              width: '12px',
+              height: '1px',
+              backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
+            }}
+          />
+          <Input
+            placeholder="before"
+            value={endVal}
+            setValue={setEndVal}
+            urlParam={'lte'}
+          />
+        </Popup>
+      )}
+    </button>
   );
 };

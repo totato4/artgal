@@ -15,15 +15,18 @@ import {
 import storage from "redux-persist/lib/storage";
 import themeSlice  from './theme/theme';
 
+
+
+const rootReducer = combineReducers({
+  itemsSlice: itemsSlice,
+  themeSlice
+});
+  
 const persistConfig = {
   key: "root",
   storage,
+  blackList: ['itemsSlice']
 };
-
-const rootReducer = combineReducers({
-  itemsSlice,
-  themeSlice
-  });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -36,6 +39,8 @@ const store = configureStore({
       },
     }),
 });
+
+
 
 export const persistor = persistStore(store);
 

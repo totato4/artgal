@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useOnClickOutside } from 'usehooks-ts';
 import { useEffect } from 'react';
 import { Icon } from './../../shared/assets/svg/Icon';
+import { Popup } from './Popup/Popup';
 
 type props = {
   filter: string | boolean;
@@ -90,19 +91,17 @@ const Dropdown: FC<props> = ({ filter, children }) => {
         )}
       </div>
       {open && (
-        <div className={`${style.ListWrapper}  background input-border color`}>
-          <ul className={style.List}>
-            {children.map((obj: any, i: number) => (
-              <DropdownItem
-                setValue={filterValue}
-                name={obj.name}
-                id={obj.id}
-                key={i + obj.name}
-                onChangeFilter={onChangeFilter}
-              />
-            ))}
-          </ul>
-        </div>
+        <Popup>
+          {children.map((obj: any, i: number) => (
+            <DropdownItem
+              setValue={filterValue}
+              name={obj.name}
+              id={obj.id}
+              key={i + obj.name}
+              onChangeFilter={onChangeFilter}
+            />
+          ))}
+        </Popup>
       )}
     </button>
   );

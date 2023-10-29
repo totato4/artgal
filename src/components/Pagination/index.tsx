@@ -1,11 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
 import { Icon } from '../shared/assets/svg/Icon';
 import style from './Pagination.module.scss';
 import { useAppDispatch, useAppSelector } from '../../RTK/store';
 import { Button } from './Button/Button';
 
 import ReactPaginate from 'react-paginate';
-import { useEffect } from 'react';
 import { setCurrentPages } from '../../RTK/asyncThunk/items';
 
 const PaginationComponent = () => {
@@ -14,29 +12,9 @@ const PaginationComponent = () => {
   const { countPages, currentPage } = useAppSelector(
     (state) => state.itemsSlice,
   );
-  const { items } = useAppSelector((state) => state.itemsSlice);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  // const page = searchParams.get('page') || '';
-  // useEffect(() => {
-  //   if (items.length == 0) {
-  //     searchParams.set('page', `${1}`);
-  //     setSearchParams(searchParams);
-  //   }
-  // }, []);
 
   const onChangePage = async (num: number) => {
-    console.log(num);
-    let page = num + 1;
     dispatch(setCurrentPages(num + 1));
-    // if (page == 0) {
-    //   searchParams.delete('page');
-    //   setSearchParams(searchParams);
-    // } else {
-    //   // page > 0 && (await searchParams.set('page', `${page}`));
-    //   await searchParams.set('page', `${page}`);
-    //   setSearchParams(searchParams);
-    // }
   };
   return (
     <>

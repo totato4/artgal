@@ -1,27 +1,18 @@
 .filters {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 15px 20px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 15px 20px;
+  width: 100%;
 }
 
-    @media (min-width: 0px) {
-    .filters {
-        grid-template-columns: 1fr;
-        justify-items: center;
-
-    }
-
-
-
-
+@media (min-width: 0px) {
+  .filters {
+  }
 }
 
 @media (min-width: 768px) {
-    .filters {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-
-    }
-
-
+  .filters {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
