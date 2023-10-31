@@ -14,8 +14,9 @@ const PaginationComponent = () => {
   );
 
   const onChangePage = async (num: number) => {
-    dispatch(setCurrentPages(num + 1));
+    dispatch(setCurrentPages(num));
   };
+
   return (
     <>
       {countPages > 1 && (
@@ -28,7 +29,7 @@ const PaginationComponent = () => {
               : style.paginationThemeWhite
           } ${style.pagination} ${style.btn}`}
         >
-          <div onClick={() => onChangePage(0)}>
+          <div onClick={() => onChangePage(1)}>
             <Button
               borderRadius="8px 0px 0px 8px"
               disabled={currentPage == 1 ? true : false}
@@ -41,7 +42,7 @@ const PaginationComponent = () => {
             activeClassName={`${
               theme == 'dark' ? style.activeDark : style.activeWhite
             }`}
-            onPageChange={(e) => onChangePage(e.selected)}
+            onPageChange={(e) => onChangePage(e.selected + 1)}
             previousLabel={
               <Button disabled={currentPage == 1 ? true : false}>
                 <Icon id="left-array" className="svg-hover" />
@@ -61,11 +62,10 @@ const PaginationComponent = () => {
             renderOnZeroPageCount={null}
           />
 
-          <div onClick={() => onChangePage(2)}>
+          <div onClick={() => onChangePage(countPages)}>
             <Button
               borderRadius="0px 8px 8px 0px"
               disabled={currentPage == countPages ? true : false}
-              rel="3"
             >
               <Icon id="double-right-array" className="svg-hover" />
             </Button>
