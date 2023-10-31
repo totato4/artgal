@@ -15,26 +15,10 @@ type props = {
 
 export const RangeDropdownComponent: FC<props> = () => {
   const { theme } = useAppSelector((state) => state.themeSlice);
-  const [startVal, setStartVal] = useState('');
-  const [endVal, setEndVal] = useState('');
+  const [startVal, setStartVal] = useState<string>('');
+  const [endVal, setEndVal] = useState<string>('');
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
-  useOnClickOutside(dropdownRef, () => setOpen(false));
-
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // console.log('GTE', searchParams.get('gte'));
-
-  // useEffect(() => {
-  //   setSearchParams({ gte: startVal, lte: endVal });
-  //   if (searchParams.get('gte') == '') {
-  //     searchParams.delete('gte');
-  //     setSearchParams(searchParams);
-  //   }
-  //   if (searchParams.get('lte') == '') {
-  //     searchParams.delete('lte');
-  //     setSearchParams(searchParams);
-  //   }
-  // }, [searchParams, startVal, endVal]);
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,6 +32,13 @@ export const RangeDropdownComponent: FC<props> = () => {
     setSearchParams(searchParams);
     setOpen(false);
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    searchParams.get('gte') !== null && setStartVal(searchParams.get('gte'));
+    // @ts-ignore
+    searchParams.get('lte') !== null && setEndVal(searchParams.get('lte'));
+  }, []);
 
   return (
     <button
