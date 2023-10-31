@@ -10,7 +10,7 @@ const ItemComponent = () => {
     <>
       {status == 'success' && (
         <>
-          {items.length > 1 ? (
+          {items.length !== 0 ? (
             <ItemList>
               {items.map((o: any, i: number) => (
                 <Item
