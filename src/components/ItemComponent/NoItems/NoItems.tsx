@@ -1,6 +1,3 @@
-import React from 'react';
-import { ReactNode } from 'react';
-
 const NoItems: any = ({ children }: any) => {
   return (
     <div

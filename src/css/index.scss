@@ -92,15 +92,21 @@
     width: 100%;
 }
 
-// .background {
-//     max-width: 1440px;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     left: 0;
-//     z-index: 0;
+// hide input number buttons (up and down)
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
 
-// }
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+// 
+
 
 /* ---------------------------------------------------------------------------- */
 
@@ -127,57 +133,3 @@
     object-fit: cover;
     z-index: 1;
 }
-
-
-// .swiper-slide {
-//     opacity: 80%;
-//     box-shadow: none;
-    
-// }
-
-// .swiper-slide-prev {
-//     opacity: 100%;
-// }
-
-// .swiper-slide-next {
-//     opacity: 100%;
-// }
-
-// .swiper-slide-active {
-//     opacity: 100%;
-// }
-
-// .swiper-slide-shadow-right {
-//     opacity: 0%;
-// }
-
-// .swiper-slide-shadow-left {
-//     opacity: 0%;
-// }
-
-// .swiper-slide-shadow-coverflow {
-//     opacity: 0%;
-// }
-
-// .swiper-pagination {
-//     position: relative;
-//     margin-top: 50px;
-// }
-
-// .swiper-pagination-bullet {
-//     width: 20px;
-//     height: 20px;
-//     background-color: blue ;
-//     opacity: 100%;
-// }
-
-// .swiper-pagination-bullet-active::before {
-//     width: 24px;
-//     height: 24px;
-//     content: " ";
-//     background-color: none;
-//     border: 1px solid blue;
-//     position: absolute;
-//     transform: translate(-50%, -2px);
-//     border-radius: 100%;
-// }

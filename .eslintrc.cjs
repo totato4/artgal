@@ -20,7 +20,50 @@ module.exports = {
     'react/require-default-props': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'namedComponents': 'arrow-function',
+    'array-callback-return': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'import/no-useless-path-segments': 'off',
+    'consistent-return': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'arrow-body-style': 'off',
+    'react-hooks/rules-of-hooks': 'off',
+
+    //
+
+    //
+    'react/jsx-curly-brace-presence': 'off',
+    'react/no-unescaped-entities': 0,
+    'jsx-a11y/interactive-supports-focus': [
+      0,
+      {
+        tabbable: ['button', 'link'],
+      },
+    ],
+    'react/function-component-definition': [
+      0,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'no-unneeded-ternary': 'off',
+    'jsx-a11y/no-static-element-interactions': [
+      'error',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp',
+        ],
+        allowExpressionValues: true,
+      },
+    ],
+
+    'no-param-reassign': [2, { props: false }],
   },
   overrides: [
     // typescript
@@ -48,6 +91,13 @@ module.exports = {
             ],
           },
         ],
+        'no-use-before-define': 0,
+        '@typescript-eslint/no-use-before-define': 'off',
+        'no-unused-expressions': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        '@typescript-eslint/no-unused-expressions': 'off',
+        'no-shadow': 0,
+        '@typescript-eslint/no-shadow': 'off',
       },
     },
     // tests

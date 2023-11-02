@@ -4,17 +4,15 @@ import FilterList from './FilterList';
 import { authors, locations } from './Dropdown/arr';
 import { RangeDropdownComponent } from './RangeDropdown/RangeDropdownComponent';
 
-const FilterComponent = () => {
-  return (
-    <>
-      <FilterList>
-        <SearchInput></SearchInput>
-        <Dropdown filter={'author'}>{authors}</Dropdown>
-        <Dropdown filter={'location'}>{locations}</Dropdown>
-        <RangeDropdownComponent />
-      </FilterList>
-    </>
-  );
-};
+const FilterComponent = () => (
+  <>
+    <FilterList>
+      <SearchInput />
+      <Dropdown filter={'author'}>{authors}</Dropdown>
+      <Dropdown filter={'location'}>{locations}</Dropdown>
+      <RangeDropdownComponent />
+    </FilterList>
+  </>
+);
 
 export default FilterComponent;

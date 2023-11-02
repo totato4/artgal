@@ -94,3 +94,37 @@
 .ListItem {
     list-style: none;
 }
+
+.List {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: hidden;
+    gap: 7px;
+    margin: 0;
+
+    font-feature-settings:
+        'clig' off,
+        'liga' off;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+@media (min-width: 768px) {
+    .List {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1025px) {
+    .List {
+        gap: 10px;
+        flex-direction: row;
+    }
+}

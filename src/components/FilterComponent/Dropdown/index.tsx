@@ -1,18 +1,18 @@
-import { useState, useRef, FC } from 'react';
-import style from './Dropdown.module.scss';
-import { DropdownItem } from './DropdownItem/DropdownItem';
+import { useState, useRef, FC, useEffect } from 'react';
+
 import { useSearchParams } from 'react-router-dom';
 import { useOnClickOutside } from 'usehooks-ts';
-import { useEffect } from 'react';
+import style from './Dropdown.module.scss';
+import { DropdownItem } from './DropdownItem/DropdownItem';
 import { Icon } from './../../shared/assets/svg/Icon';
 import { Popup } from './Popup/Popup';
 
-type props = {
+type Props = {
   filter: string | boolean;
   children: object[];
 };
 
-const Dropdown: FC<props> = ({ filter, children }) => {
+const Dropdown: FC<Props> = ({ filter, children }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
   const textRef = useRef(null);
@@ -26,7 +26,7 @@ const Dropdown: FC<props> = ({ filter, children }) => {
     string | boolean | null | number
   >(filter);
 
-  const onChangeFilter = (name: string, id?: number, e?: any) => {
+  const onChangeFilter = (name: string, id?: number) => {
     setFilterValue(name);
     searchParams.set(`${filter}`, `${id}`);
     setSearchParams(searchParams);
@@ -46,8 +46,8 @@ const Dropdown: FC<props> = ({ filter, children }) => {
       searchParams.get(`${filter}`) !== null &&
       searchParams.get(`${filter}`) !== undefined
     ) {
-      const currentFilter: any = children.find((obj: any, i) => {
-        if (obj.id == searchParams.get(`${filter}`)) {
+      const currentFilter: any = children.find((obj: any) => {
+        if (obj.id === searchParams.get(`${filter}`)) {
           return obj.name;
         }
       });
@@ -72,6 +72,7 @@ const Dropdown: FC<props> = ({ filter, children }) => {
       <div className={style.dropdownArray}>
         {filterValue !== `${filter}` && (
           <div
+            role="button"
             style={{ padding: '4px' }}
             onClick={(e) => {
               onDeleteFilter(e);
@@ -92,12 +93,12 @@ const Dropdown: FC<props> = ({ filter, children }) => {
       </div>
       {open && (
         <Popup>
-          {children.map((obj: any, i: number) => (
+          {children.map((obj: any) => (
             <DropdownItem
               setValue={filterValue}
               name={obj.name}
               id={obj.id}
-              key={i + obj.name}
+              key={obj.name + obj.id}
               onChangeFilter={onChangeFilter}
             />
           ))}

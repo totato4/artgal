@@ -1,9 +1,8 @@
-import { Icon } from '../shared/assets/svg/Icon';
+import ReactPaginate from 'react-paginate';
 import style from './Pagination.module.scss';
 import { useAppDispatch, useAppSelector } from '../../RTK/store';
 import { Button } from './Button/Button';
-
-import ReactPaginate from 'react-paginate';
+import { Icon } from '../shared/assets/svg/Icon';
 import { setCurrentPages } from '../../RTK/asyncThunk/items';
 
 const PaginationComponent = () => {
@@ -18,21 +17,21 @@ const PaginationComponent = () => {
   };
 
   return (
-    <>
+    <div>
       {countPages > 1 && (
         <div
           data-theme-color={theme}
           data-theme-color-hover={theme}
           className={`${
-            theme == 'dark'
+            theme === 'dark'
               ? style.paginationThemeDark
               : style.paginationThemeWhite
           } ${style.pagination} ${style.btn}`}
         >
-          <div onClick={() => onChangePage(1)}>
+          <div role="none" onClick={() => onChangePage(1)}>
             <Button
               borderRadius="8px 0px 0px 8px"
-              disabled={currentPage == 1 ? true : false}
+              disabled={currentPage === 1 ? true : false}
             >
               <Icon id="double-left-array" className="svg-hover" />
             </Button>
@@ -40,16 +39,16 @@ const PaginationComponent = () => {
 
           <ReactPaginate
             activeClassName={`${
-              theme == 'dark' ? style.activeDark : style.activeWhite
+              theme === 'dark' ? style.activeDark : style.activeWhite
             }`}
             onPageChange={(e) => onChangePage(e.selected + 1)}
             previousLabel={
-              <Button disabled={currentPage == 1 ? true : false}>
+              <Button disabled={currentPage === 1 ? true : false}>
                 <Icon id="left-array" className="svg-hover" />
               </Button>
             }
             nextLabel={
-              <Button disabled={currentPage == countPages ? true : false}>
+              <Button disabled={currentPage === countPages ? true : false}>
                 <Icon id="right-array" className="svg-hover" />
               </Button>
             }
@@ -62,17 +61,17 @@ const PaginationComponent = () => {
             renderOnZeroPageCount={null}
           />
 
-          <div onClick={() => onChangePage(countPages)}>
+          <div role="button" onClick={() => onChangePage(countPages)}>
             <Button
               borderRadius="0px 8px 8px 0px"
-              disabled={currentPage == countPages ? true : false}
+              disabled={currentPage === countPages ? true : false}
             >
               <Icon id="double-right-array" className="svg-hover" />
             </Button>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

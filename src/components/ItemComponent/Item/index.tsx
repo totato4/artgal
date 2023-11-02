@@ -1,23 +1,20 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import style from './Item.module.scss';
-// import logoBlack from '../shared/assets/art.jpg';
-type props = {
+
+type Props = {
   name?: string | number;
   author?: string | number;
   created?: string | number;
   location?: string | number;
 };
 
-const Item: FC<props> = ({ author, created, location, name }) => {
-  const [open, setOpen] = useState(false);
+const Item: FC<Props> = ({ author, created, location, name }) => {
   return (
     <div className={style.container}>
-      <div
-      // className="_ibg"
-      >
+      <div>
         <img
           src="./src/components/shared/assets/picture.jpg"
-          alt="Picture"
+          alt="artPicture"
           className={style.img}
         />
       </div>

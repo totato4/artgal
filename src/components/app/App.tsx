@@ -1,11 +1,10 @@
-import clsx from 'clsx';
 import Home from '../../pages/Home';
 import style from './App.module.scss';
 import { useAppSelector } from '../../RTK/store';
 
 const App = () => {
   const { theme } = useAppSelector((state) => state.themeSlice);
-  const { white, black, wrapper, container } = style;
+  const { wrapper, container } = style;
 
   return (
     // <div className={`${wrapper} ${isBlack ? black : white}`}>
@@ -14,7 +13,7 @@ const App = () => {
       data-theme-background={theme}
       data-theme-input-border={theme}
       data-theme-border={theme}
-      className={` ${wrapper + '  background color'}`}
+      className={` ${wrapper} background color`}
     >
       <div className={container}>
         <Home />

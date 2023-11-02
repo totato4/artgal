@@ -1,27 +1,33 @@
-import { useState, useEffect, useRef, FC } from 'react';
+import { useState, useEffect, useRef, FC, ReactNode } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
-import { ReactNode } from 'react';
 import { Input } from './Input/Input';
 import { Popup } from './Popup/Popup';
 import style from './RangeDropdownComponent.module.scss';
 import { useAppSelector } from '../../../RTK/store';
 import { Icon } from '../../../components/shared/assets/svg/Icon';
 
-type props = {
+type Props = {
   filter?: string | boolean;
   children?: ReactNode;
 };
 
-export const RangeDropdownComponent: FC<props> = () => {
+export const RangeDropdownComponent: FC<Props> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  //
+  const startQuery =
+    searchParams.get('gte') == null ? '' : searchParams.get('gte');
+  const endQuery =
+    searchParams.get('lte') == null ? '' : searchParams.get('lte');
+
+  const [startVal, setStartVal] = useState<any>(startQuery);
+  const [endVal, setEndVal] = useState<any>(endQuery);
+  //
   const { theme } = useAppSelector((state) => state.themeSlice);
-  const [startVal, setStartVal] = useState<string>('');
-  const [endVal, setEndVal] = useState<string>('');
+
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const onDeleteFilter = (e: any) => {
     e.stopPropagation();
@@ -33,11 +39,49 @@ export const RangeDropdownComponent: FC<props> = () => {
     setOpen(false);
   };
 
+  // const onChangeStart = (eventVal: string | number, urlParam: string) => {
+  //   //  переменная urlParam хранит string "name"
+  //   // eventVal тоже хранит string значение
+  //   setValue(eventVal);
+  //   searchParams.set(`${urlParam}`, `${eventVal}`);
+  //   setSearchParams(searchParams);
+  //   if (eventVal === '') {
+  //     searchParams.delete(`${urlParam}`);
+  //     setSearchParams(searchParams);
+  //   }
+  // }
+
+  const handleOnChangeStart = (value: any) => {
+    if (value === '') {
+      setStartVal(value);
+      searchParams.delete('gte');
+      setSearchParams(searchParams);
+    } else {
+      setStartVal(value);
+      searchParams.set('gte', value);
+      setSearchParams(searchParams);
+    }
+  };
+  const handleOnChangeEnd = (value: any) => {
+    if (value === '') {
+      setEndVal(value);
+      searchParams.delete('lte');
+      setSearchParams(searchParams);
+    } else {
+      setEndVal(value);
+      searchParams.set('lte', value);
+      setSearchParams(searchParams);
+    }
+  };
+
   useEffect(() => {
-    // @ts-ignore
-    searchParams.get('gte') !== null && setStartVal(searchParams.get('gte'));
-    // @ts-ignore
-    searchParams.get('lte') !== null && setEndVal(searchParams.get('lte'));
+    if (searchParams.get('gte') !== null) {
+      setStartVal(searchParams.get('gte'));
+    }
+
+    if (searchParams.get('lte') !== null) {
+      setEndVal(searchParams.get('lte'));
+    }
   }, []);
 
   return (
@@ -56,6 +100,7 @@ export const RangeDropdownComponent: FC<props> = () => {
         <div className={style.dropdownArray}>
           {startVal || endVal ? (
             <div
+              role="button"
               style={{ padding: '4px' }}
               onClick={(e) => {
                 onDeleteFilter(e);
@@ -79,26 +124,26 @@ export const RangeDropdownComponent: FC<props> = () => {
       </div>
       {open && (
         <Popup>
-          <Input
-            placeholder="for"
-            value={startVal}
-            setValue={setStartVal}
-            urlParam={'gte'}
-          />
-          <div
-            className="line"
-            style={{
-              width: '12px',
-              height: '1px',
-              backgroundColor: `${theme == 'dark' ? 'white' : 'black'}`,
-            }}
-          />
-          <Input
-            placeholder="before"
-            value={endVal}
-            setValue={setEndVal}
-            urlParam={'lte'}
-          />
+          <ul className={style.List}>
+            <Input
+              placeholder="for"
+              val={startVal}
+              setValue={handleOnChangeStart}
+            />
+            <div
+              className="line"
+              style={{
+                width: '12px',
+                height: '1px',
+                backgroundColor: `${theme === 'dark' ? 'white' : 'black'}`,
+              }}
+            />
+            <Input
+              placeholder="before"
+              val={endVal}
+              setValue={handleOnChangeEnd}
+            />
+          </ul>
         </Popup>
       )}
     </button>

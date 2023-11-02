@@ -1,17 +1,14 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import { FC } from 'react';
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, FC } from 'react';
 import style from './Button.module.scss';
 import { useAppSelector } from '../../../RTK/store';
 
-type props = {
+type Props = {
   children?: ReactNode;
-  classname?: any;
   borderRadius?: string;
   onClick?: any;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button: FC<props> = ({
+export const Button: FC<Props> = ({
   children,
   borderRadius,
   disabled = false,
@@ -25,6 +22,7 @@ export const Button: FC<props> = ({
 
   return (
     <button
+      type="button"
       onClick={onClick}
       data-theme-color-hover={theme}
       data-theme-background-hover={theme}

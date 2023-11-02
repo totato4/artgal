@@ -1,10 +1,10 @@
 import { FC, ReactNode } from 'react';
 import style from './PaginationList.module.scss';
 
-type props = {
+type Props = {
   children: ReactNode;
 };
 
-export const PaginationList: FC<props> = ({ children }) => {
+export const PaginationList: FC<Props> = ({ children }) => {
   return <div className={style.wrapper}>{children}</div>;
 };

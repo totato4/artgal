@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './Header.module.scss';
 import logoBlack from '../shared/assets/logoBlack.svg';
 import frame from '../shared/assets/frame.svg';
@@ -10,7 +9,7 @@ const index = () => {
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.themeSlice);
   const switchTheme = () => {
-    if (theme == 'white') {
+    if (theme === 'white') {
       dispatch(changeTheme('dark'));
     } else {
       dispatch(changeTheme('white'));
@@ -23,7 +22,7 @@ const index = () => {
         <img
           className={style.frame}
           // src={isBlack ? frame : frameBlack}
-          src={theme == 'white' ? frameBlack : frame}
+          src={theme === 'white' ? frameBlack : frame}
           alt="frame"
         />
       </div>

@@ -1,4 +1,4 @@
-export const authors: { id: number; name: string}[] = [
+export const authors: { id: number; name: string }[] = [
   {
     id: 1,
     name: 'Ivan Aivazovsky',
@@ -37,7 +37,7 @@ export const authors: { id: number; name: string}[] = [
   },
 ];
 
-export const locations:{ id: number; name: string}[] = [
+export const locations:{ id: number; name: string }[] = [
   {
     id: 1,
     name: 'Russian Museum',

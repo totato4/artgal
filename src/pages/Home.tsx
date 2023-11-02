@@ -1,16 +1,17 @@
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+import { useAppDispatch, useAppSelector } from '../hooks/useRedux';
+import { fetchItems } from '../RTK/asyncThunk/items';
 import Header from '../components/Header';
 import FilterComponent from '../components/FilterComponent/index';
 import ItemComponent from '../components/ItemComponent/index';
 import PaginationComponent from '../components/Pagination/index';
-import { fetchItems } from '../RTK/asyncThunk/items';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../RTK/store';
-import { useSearchParams } from 'react-router-dom';
 
-const Home = () => {
+function Home() {
   const { currentPage } = useAppSelector((state) => state.itemsSlice);
   const dispatch = useAppDispatch();
-  const [searchParams, _] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(
@@ -34,6 +35,6 @@ const Home = () => {
       </main>
     </>
   );
-};
+}
 
 export default Home;

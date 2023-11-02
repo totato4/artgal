@@ -8,17 +8,17 @@ const ItemComponent = () => {
 
   return (
     <>
-      {status == 'success' && (
+      {status === 'success' && (
         <>
           {items.length !== 0 ? (
             <ItemList>
-              {items.map((o: any, i: number) => (
+              {items.map((o: any) => (
                 <Item
                   name={o.name}
                   author={o.author}
                   created={o.created}
                   location={o.location}
-                  key={i + o.name + 'artkey'}
+                  key={o.name + o.created}
                 />
               ))}
             </ItemList>

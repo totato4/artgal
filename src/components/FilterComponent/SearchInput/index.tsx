@@ -1,16 +1,10 @@
-import { useState } from 'react';
-import style from './SearchInput.module.scss';
-import { useAppSelector } from '../../../RTK/store';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDebounce } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLInputElement>;
-type myProps = {
-  value?: string;
-};
+import style from './SearchInput.module.scss';
 
-const SearchInput = ({}: myProps) => {
+const SearchInput = () => {
   const [value, setValue] = useState('');
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -18,8 +12,7 @@ const SearchInput = ({}: myProps) => {
 
   const debouncedSearch = useDebounce<string>(value, 400);
 
-  const { theme } = useAppSelector((state) => state.themeSlice);
-  const { wrapper, black, white } = style;
+  const { wrapper } = style;
 
   // const { isBlack } = useAppSelector((state) => state.themeSlice);
 
