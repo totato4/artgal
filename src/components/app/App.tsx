@@ -13,6 +13,7 @@ const App = () => {
       data-theme-background={theme}
       data-theme-input-border={theme}
       data-theme-border={theme}
+      data-theme-svg={theme}
       className={` ${wrapper} background color`}
     >
       <div className={container}>

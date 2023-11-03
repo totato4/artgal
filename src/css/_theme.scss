@@ -1,16 +1,3 @@
-:root {
-    // --size: 1rem;
-    // --color-primary: black;
-    // --background: #fff;
-    // --background-hover: #fff;
-    // --color: #000;
-    // --color-hover: #000;
-    // --border: 1px solid #000;
-    // --border-hover: 1px solid #000;
-    
-    // --input-border: #000;
-    // --on-hover: #000;
-}
 
 .iconColorWhite {
     fill: #000;
@@ -113,3 +100,9 @@
 [data-theme-input-border="white"] { --input-border: 1px solid rgba(0, 0, 0, 0.30);}
 [data-theme-input-border="dark"] { --input-border: 1px solid #FFF;}
 
+[data-theme-svg="white"] {
+    --fill-svg: rgba(0, 0, 0, 0.30);
+}
+[data-theme-svg="dark"] {
+    --fill-svg: rgba(255, 255, 255, 0.30);
+}

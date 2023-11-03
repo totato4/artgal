@@ -17,14 +17,14 @@
 }
 
 .cross {
-    fill: #555555;
+    fill: var(--fill-svg);
     width: 8px;
     height: 8px;
 }
 
 .arrow-top {
-    fill: white;
-    fill-opacity: 0.3;
+    fill: var(--fill-svg);
+   
     width: 10px;
     height: 6px;
 }

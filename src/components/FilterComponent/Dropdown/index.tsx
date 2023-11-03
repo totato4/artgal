@@ -22,6 +22,7 @@ const Dropdown: FC<Props> = ({ filter, children }) => {
   // --------------------Routing----------------------------- //
 
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [filterValue, setFilterValue] = useState<
     string | boolean | null | number
   >(filter);

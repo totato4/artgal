@@ -2,6 +2,7 @@ import ItemList from './ItemList';
 import Item from './Item';
 import { useAppSelector } from '../../RTK/store';
 import NoItems from './NoItems/NoItems';
+import { ThreeDots } from './ItemLoader/index';
 
 const ItemComponent = () => {
   const { items, status } = useAppSelector((state) => state.itemsSlice);
@@ -29,12 +30,11 @@ const ItemComponent = () => {
           )}
         </>
       )}
-      {/* {status == 'error' && (
-        <NoItems>
-          Не удалось загрузить картины, проверьте соединение с интернетом или
-          перезагрузите страницу
-        </NoItems>
-      )} */}
+      {status === 'loading' && (
+        <div style={{ margin: '150px auto' }}>
+          <ThreeDots />
+        </div>
+      )}
     </>
   );
 };
