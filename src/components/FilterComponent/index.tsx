@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
 import SearchInput from './SearchInput';
 import Dropdown from './Dropdown';
 import FilterList from './FilterList';

@@ -14,8 +14,6 @@ const SearchInput = () => {
 
   const { wrapper } = style;
 
-  // const { isBlack } = useAppSelector((state) => state.themeSlice);
-
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     if (debouncedSearch.length < 1) {

@@ -124,6 +124,7 @@ export const itemsSlice = createSlice({
       fetchItems.rejected, (state, action) => {
       state.status = Status.ERROR;
         state.items = [];
+      // eslint-disable-next-line no-console
       console.error(action.error.message);
      
     });

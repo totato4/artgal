@@ -1,3 +1,3 @@
 export type Itheme = {
-    theme: "white" | "dark"
-}
+    theme: 'white' | 'dark'
+};
