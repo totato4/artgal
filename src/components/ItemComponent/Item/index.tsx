@@ -13,7 +13,8 @@ const Item: FC<Props> = ({ author, created, location, name }) => {
     <div className={style.container}>
       <div>
         <img
-          src="./src/components/shared/assets/picture.jpg"
+          // src="./src/components/shared/assets/picture.jpg"
+          src="./picture.jpg"
           alt="artPicture"
           className={style.img}
         />
