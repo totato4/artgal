@@ -10,7 +10,7 @@ export default defineConfig({
       components: '/src/components',
       pages: '/src/pages',
       hooks: '/src/hooks',
-      rtk: '/src/RTK',
+      RTK: '/src/RTK',
     }
   }
 })
