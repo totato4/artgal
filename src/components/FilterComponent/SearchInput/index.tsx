@@ -1,29 +1,43 @@
 import { useState, useEffect } from 'react';
-import { useDebounce } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
+import { useDebounce } from 'hooks/useDebounce';
 
 import style from './SearchInput.module.scss';
 
 const SearchInput = () => {
-  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('q') == null ? '' : searchParams.get('q');
+  // @ts-ignore
+  const [value, setValue] = useState<string>(query);
+
+  const debouncedValue = useDebounce<string>(value, 400);
+
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const debouncedSearch = useDebounce<string>(value, 400);
+  useEffect(() => {
+    // @ts-ignore
+    if (debouncedValue.length === 0) {
+      searchParams.delete('q');
+      setSearchParams(searchParams);
+      console.log(debouncedValue);
+    } else {
+      setSearchParams({ q: debouncedValue });
+      console.log('second');
+    }
+  }, [debouncedValue]);
+  useEffect(() => {
+    const sParam = searchParams.get('q');
+    if (!sParam) {
+      searchParams.delete('q');
+      setSearchParams(searchParams);
+      console.log('SEARC');
+    }
+  }, []);
 
   const { wrapper } = style;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {
-    if (debouncedSearch.length < 1) {
-      searchParams.delete('q');
-      setSearchParams(searchParams);
-    } else {
-      searchParams.set('q', debouncedSearch);
-      setSearchParams(searchParams);
-    }
-  }, [debouncedSearch]);
   return (
     <input
       className={`${wrapper} color background input-border`}

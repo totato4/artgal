@@ -1,9 +1,12 @@
 import ReactPaginate from 'react-paginate';
-import style from './Pagination.module.scss';
-import { useAppDispatch, useAppSelector } from '../../RTK/store';
+
+import { useAppSelector, useAppDispatch } from 'hooks/useRedux';
+import { setCurrentPages } from 'RTK/asyncThunk/items';
+
+import { Icon } from 'components/shared/assets/svg/Icon';
 import { Button } from './Button/Button';
-import { Icon } from '../shared/assets/svg/Icon';
-import { setCurrentPages } from '../../RTK/asyncThunk/items';
+
+import style from './Pagination.module.scss';
 
 const PaginationComponent = () => {
   const dispatch = useAppDispatch();

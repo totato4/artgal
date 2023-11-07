@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode, FC } from 'react';
+import { useAppSelector } from 'hooks/useRedux';
 import style from './Button.module.scss';
-import { useAppSelector } from '../../../RTK/store';
 
 type Props = {
   children?: ReactNode;

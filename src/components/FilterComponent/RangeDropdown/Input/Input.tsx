@@ -1,6 +1,5 @@
 import { FC } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-import { useAppSelector } from '../../../../RTK/store';
+import { useAppSelector } from 'hooks/useRedux';
 import style from './Input.module.scss';
 
 type Props = {

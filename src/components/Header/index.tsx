@@ -1,9 +1,10 @@
+import logoBlack from 'components/shared/assets/logoBlack.svg';
+import frame from 'components/shared/assets/frame.svg';
+import frameBlack from 'components/shared/assets/frameBlack.svg';
+import { useAppSelector, useAppDispatch } from 'hooks/useRedux';
+import { changeTheme } from 'RTK/theme/theme';
+
 import style from './Header.module.scss';
-import logoBlack from '../shared/assets/logoBlack.svg';
-import frame from '../shared/assets/frame.svg';
-import frameBlack from '../shared/assets/frameBlack.svg';
-import { useAppDispatch, useAppSelector } from './../../RTK/store';
-import { changeTheme } from '../../RTK/theme/theme';
 
 const index = () => {
   const dispatch = useAppDispatch();

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-import { useAppDispatch, useAppSelector } from '../hooks/useRedux';
-import { fetchItems } from '../RTK/asyncThunk/items';
-import Header from '../components/Header';
-import FilterComponent from '../components/FilterComponent/index';
-import ItemComponent from '../components/ItemComponent/index';
-import PaginationComponent from '../components/Pagination/index';
+import { useAppDispatch, useAppSelector } from 'RTK/store';
+import Header from 'components/Header/index';
+// import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
+import { fetchItems } from 'RTK/asyncThunk/items';
+import FilterComponent from 'components/FilterComponent';
+import ItemComponent from 'components/ItemComponent';
+import PaginationComponent from 'components/Pagination';
 
 function Home() {
   const { currentPage } = useAppSelector((state) => state.itemsSlice);

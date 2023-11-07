@@ -1,6 +1,6 @@
-import Home from '../../pages/Home';
+import { useAppSelector } from 'RTK/store';
+import Home from 'pages/Home';
 import style from './App.module.scss';
-import { useAppSelector } from '../../RTK/store';
 
 const App = () => {
   const { theme } = useAppSelector((state) => state.themeSlice);

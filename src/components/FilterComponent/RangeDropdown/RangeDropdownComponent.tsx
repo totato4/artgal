@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef, FC, ReactNode } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
+import { useAppSelector } from 'hooks/useRedux';
+import { Icon } from 'components/shared/assets/svg/Icon';
 import { Input } from './Input/Input';
 import { Popup } from './Popup/Popup';
 import style from './RangeDropdownComponent.module.scss';
-import { useAppSelector } from '../../../RTK/store';
-import { Icon } from '../../../components/shared/assets/svg/Icon';
 
 type Props = {
   filter?: string | boolean;
@@ -22,6 +22,8 @@ export const RangeDropdownComponent: FC<Props> = () => {
 
   const [startVal, setStartVal] = useState<any>(startQuery);
   const [endVal, setEndVal] = useState<any>(endQuery);
+  // const debouncedSearchStart = useDebounce<string | null>(startQuery, 400);
+  // const debouncedSearchEnd = useDebounce<string | null>(endQuery, 400);
   //
   const { theme } = useAppSelector((state) => state.themeSlice);
 
@@ -39,27 +41,15 @@ export const RangeDropdownComponent: FC<Props> = () => {
     setOpen(false);
   };
 
-  // const onChangeStart = (eventVal: string | number, urlParam: string) => {
-  //   //  переменная urlParam хранит string "name"
-  //   // eventVal тоже хранит string значение
-  //   setValue(eventVal);
-  //   searchParams.set(`${urlParam}`, `${eventVal}`);
-  //   setSearchParams(searchParams);
-  //   if (eventVal === '') {
-  //     searchParams.delete(`${urlParam}`);
-  //     setSearchParams(searchParams);
-  //   }
-  // }
-
   const handleOnChangeStart = (value: any) => {
     if (value === '') {
       setStartVal(value);
-      searchParams.delete('gte');
-      setSearchParams(searchParams);
+      // searchParams.delete('gte');
+      // setSearchParams(searchParams);
     } else {
       setStartVal(value);
-      searchParams.set('gte', value);
-      setSearchParams(searchParams);
+      // searchParams.set('gte', value);
+      // setSearchParams(searchParams);
     }
   };
   const handleOnChangeEnd = (value: any) => {
@@ -83,6 +73,17 @@ export const RangeDropdownComponent: FC<Props> = () => {
       setEndVal(searchParams.get('lte'));
     }
   }, []);
+
+  // useEffect(() => {
+  //   if (debouncedSearchStart == null || '') {
+  //     searchParams.delete('q');
+  //     setSearchParams(searchParams);
+  //   } else {
+  //     //  @ts-ignore
+  //     searchParams.set('q', debouncedSearchStart);
+  //     setSearchParams(searchParams);
+  //   }
+  // }, [debouncedSearchStart]);
 
   return (
     <button

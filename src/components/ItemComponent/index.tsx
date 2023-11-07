@@ -1,6 +1,7 @@
+import { useAppSelector } from 'hooks/useRedux';
+
 import ItemList from './ItemList';
 import Item from './Item';
-import { useAppSelector } from '../../RTK/store';
 import NoItems from './NoItems/NoItems';
 import { ThreeDots } from './ItemLoader/index';
 
