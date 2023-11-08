@@ -1,6 +1,5 @@
-import logoBlack from 'components/shared/assets/logoBlack.svg';
-import frame from 'components/shared/assets/frame.svg';
-import frameBlack from 'components/shared/assets/frameBlack.svg';
+import Logo from 'components/shared/assets/svg/Logo.svg';
+import { Icon } from 'components/shared/assets/svg/Icon';
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux';
 import { changeTheme } from 'RTK/theme/theme';
 
@@ -18,14 +17,9 @@ const index = () => {
   };
   return (
     <header className={style.header}>
-      <img className={style.logo} src={logoBlack} alt="logo" />
+      <img className={style.Logo} src={Logo} alt="Logo" />
       <div className={style.frameWrapper} onClick={() => switchTheme()}>
-        <img
-          className={style.frame}
-          // src={isBlack ? frame : frameBlack}
-          src={theme === 'white' ? frameBlack : frame}
-          alt="frame"
-        />
+        <Icon id="frame" className="frame" />
       </div>
     </header>
   );

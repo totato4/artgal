@@ -8,7 +8,8 @@ type Props = {
     | 'right-array'
     | 'double-right-array'
     | 'cross'
-    | 'arrow-top';
+    | 'arrow-top'
+    | 'frame';
   className?: any;
 };
 
