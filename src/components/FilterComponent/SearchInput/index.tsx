@@ -18,23 +18,14 @@ const SearchInput = () => {
 
   useEffect(() => {
     // @ts-ignore
-    if (debouncedValue.length === 0) {
+    if (!debouncedValue) {
       searchParams.delete('q');
       setSearchParams(searchParams);
-      console.log(debouncedValue);
     } else {
-      setSearchParams({ q: debouncedValue });
-      console.log('second');
+      searchParams.set('q', debouncedValue);
+      setSearchParams(searchParams);
     }
   }, [debouncedValue]);
-  useEffect(() => {
-    const sParam = searchParams.get('q');
-    if (!sParam) {
-      searchParams.delete('q');
-      setSearchParams(searchParams);
-      console.log('SEARC');
-    }
-  }, []);
 
   const { wrapper } = style;
 

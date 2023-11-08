@@ -3,6 +3,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { useSearchParams } from 'react-router-dom';
 import { useAppSelector } from 'hooks/useRedux';
 import { Icon } from 'components/shared/assets/svg/Icon';
+import { useDebounce } from 'hooks/useDebounce';
 import { Input } from './Input/Input';
 import { Popup } from './Popup/Popup';
 import style from './RangeDropdownComponent.module.scss';
@@ -13,8 +14,8 @@ type Props = {
 };
 
 export const RangeDropdownComponent: FC<Props> = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   //
+  const [searchParams, setSearchParams] = useSearchParams();
   const startQuery =
     searchParams.get('gte') == null ? '' : searchParams.get('gte');
   const endQuery =
@@ -22,8 +23,8 @@ export const RangeDropdownComponent: FC<Props> = () => {
 
   const [startVal, setStartVal] = useState<any>(startQuery);
   const [endVal, setEndVal] = useState<any>(endQuery);
-  // const debouncedSearchStart = useDebounce<string | null>(startQuery, 400);
-  // const debouncedSearchEnd = useDebounce<string | null>(endQuery, 400);
+  const debouncedSearchStart = useDebounce<string | null>(startVal, 400);
+  const debouncedSearchEnd = useDebounce<string | null>(endVal, 400);
   //
   const { theme } = useAppSelector((state) => state.themeSlice);
 
@@ -40,56 +41,40 @@ export const RangeDropdownComponent: FC<Props> = () => {
     setSearchParams(searchParams);
     setOpen(false);
   };
+  //
 
   const handleOnChangeStart = (value: any) => {
-    if (value === '') {
-      setStartVal(value);
-      // searchParams.delete('gte');
-      // setSearchParams(searchParams);
-    } else {
-      setStartVal(value);
-      // searchParams.set('gte', value);
-      // setSearchParams(searchParams);
-    }
+    setStartVal(value);
   };
   const handleOnChangeEnd = (value: any) => {
-    if (value === '') {
-      setEndVal(value);
-      searchParams.delete('lte');
-      setSearchParams(searchParams);
-    } else {
-      setEndVal(value);
-      searchParams.set('lte', value);
-      setSearchParams(searchParams);
-    }
+    setEndVal(value);
   };
 
   useEffect(() => {
-    if (searchParams.get('gte') !== null) {
-      setStartVal(searchParams.get('gte'));
+    // @ts-ignore
+    if (!debouncedSearchStart) {
+      searchParams.delete('gte');
+      setSearchParams(searchParams);
+    } else {
+      searchParams.set('gte', debouncedSearchStart);
+      setSearchParams(searchParams);
     }
-
-    if (searchParams.get('lte') !== null) {
-      setEndVal(searchParams.get('lte'));
+  }, [debouncedSearchStart]);
+  useEffect(() => {
+    // @ts-ignore
+    if (!debouncedSearchEnd) {
+      searchParams.delete('lte');
+      setSearchParams(searchParams);
+    } else {
+      searchParams.set('lte', debouncedSearchEnd);
+      setSearchParams(searchParams);
     }
-  }, []);
-
-  // useEffect(() => {
-  //   if (debouncedSearchStart == null || '') {
-  //     searchParams.delete('q');
-  //     setSearchParams(searchParams);
-  //   } else {
-  //     //  @ts-ignore
-  //     searchParams.set('q', debouncedSearchStart);
-  //     setSearchParams(searchParams);
-  //   }
-  // }, [debouncedSearchStart]);
+  }, [debouncedSearchEnd]);
 
   return (
     <button
       ref={dropdownRef}
       type="button"
-      // className={`${open ? style.dropdownActive : style.dropdown}`}
       onClick={() => setOpen(true)}
       className={`  background input-border 
       ${open ? style.dropdownActive : style.dropdown}   `}
