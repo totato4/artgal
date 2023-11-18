@@ -16,8 +16,8 @@ function Home() {
   useEffect(() => {
     dispatch(
       fetchItems({
-        author: searchParams.get('author'),
-        location: searchParams.get('location'),
+        author: searchParams.get('Author'),
+        location: searchParams.get('Location'),
         q: searchParams.get('q'),
         page: currentPage,
         gte: searchParams.get('gte'),

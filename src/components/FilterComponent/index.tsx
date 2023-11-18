@@ -10,9 +10,9 @@ const FilterComponent = () => {
       <FilterList>
         <SearchInput />
 
-        <Dropdown filter={'author'}>{authors}</Dropdown>
+        <Dropdown filter={'Author'}>{authors}</Dropdown>
 
-        <Dropdown filter={'location'}>{locations}</Dropdown>
+        <Dropdown filter={'Location'}>{locations}</Dropdown>
 
         <RangeDropdownComponent />
       </FilterList>
