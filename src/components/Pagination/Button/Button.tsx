@@ -6,7 +6,6 @@ type Props = {
   children: ReactNode | string;
   borderRadius?: string;
   onClick?: () => void;
-  ariaLabel?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<Props> = ({
@@ -14,7 +13,6 @@ export const Button: FC<Props> = ({
   borderRadius,
   disabled = false,
   onClick,
-  ariaLabel,
 }) => {
   const { theme } = useAppSelector((state) => state.themeSlice);
 
@@ -24,8 +22,6 @@ export const Button: FC<Props> = ({
 
   return (
     <button
-      disabled={disabled}
-      aria-label={ariaLabel}
       type="button"
       onClick={onClick}
       data-theme-color-hover={theme}

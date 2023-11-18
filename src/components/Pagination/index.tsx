@@ -35,7 +35,6 @@ const PaginationComponent = () => {
             borderRadius="8px 0px 0px 8px"
             disabled={currentPage === 1 ? true : false}
             onClick={() => onChangePage(1)}
-            ariaLabel="First page"
           >
             <Icon id="double-left-array" className="svg-hover" />
           </Button>
@@ -69,7 +68,6 @@ const PaginationComponent = () => {
             borderRadius="0px 8px 8px 0px"
             disabled={currentPage === countPages ? true : false}
             onClick={() => onChangePage(countPages)}
-            ariaLabel="Last page"
           >
             <Icon id="double-right-array" className="svg-hover" />
           </Button>

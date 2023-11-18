@@ -43,36 +43,109 @@
 //     --fill: black;
 // }
 
-[data-theme-color="white"] { --color: black; }
-[data-theme-color="dark"] { --color: white; }
+
 [data-theme-color-hover="white"] {
     --color-hover: black;
-    &:hover {
-        --color-hover:white;
+    
+    @media(hover: hover) {
+&:hover {
+        --color-hover: white;
     }
+    }
+        @media(hover: none) {
+            &:active {
+                --color-hover: white;
+            }
+        }
 }
 
 [data-theme-color-hover="dark"] {
     --color-hover: white;
-    &:hover {
-        --color-hover: black;
+    @media(hover: hover) {
+        &:hover {
+                --color-hover: black;
+            }
     }
+        @media(hover: none) {
+            &:active {
+                --color-hover: black;
+            }
+        }
 }
 
-[data-theme-background="white"] { --background: #fff; }
-[data-theme-background="dark"] { --background: black; }
+
 [data-theme-background-hover="dark"] {
     --background-hover: black;
-    &:hover {
-        --background-hover: #fff;
+    @media(hover: hover) {
+        &:hover {
+                --background-hover: #fff;
+            }
     }
+        @media(hover: none) {
+            &:active {
+                --background-hover: #fff;
+            }
+        }
 }
 
 [data-theme-background-hover="white"] {
     --background-hover: #fff;
-    &:hover {
-        --background-hover: black;
+    @media(hover: hover) {
+        &:hover {
+                --background-hover: black;
+            }
     }
+        @media(hover: none) {
+            &:active {
+                --background-hover: black;
+            }
+        }
+}
+
+
+
+[data-theme-border-hover="white"] {
+    --border-hover: 1px solid black;
+    @media(hover: hover) {
+        &:hover {
+                --border-hover: 1px solid black;
+            }
+    }
+        @media(hover: none) {
+            &:active {
+                --border-hover: 1px solid black;
+            }
+        }
+}
+
+[data-theme-border-hover="dark"] {
+    --border-hover: 1px solid #fff;
+    @media(hover: hover) {
+        &:hover {
+                --border-hover: 1px solid white;
+            }
+    }
+    @media(hover: none) {
+        &:active {
+                --border-hover: 1px solid white;
+            }
+    }
+}
+
+[data-theme-color="white"] {
+    --color: black;
+}
+
+[data-theme-color="dark"] {
+    --color: white;
+}
+
+[data-theme-background="white"] {
+    --background: #fff;
+}
+
+[data-theme-background="dark"] {
+    --background: black;
 }
 
 [data-theme-border="white"] {
@@ -81,20 +154,6 @@
 
 [data-theme-border="dark"] {
     --border: 1px solid #fff;
-}
-
-[data-theme-border-hover="white"] {
-    --border-hover: 1px solid black;
-    &:hover {
-        --border-hover: 1px solid black;
-    }
-}
-
-[data-theme-border-hover="dark"] {
-    --border-hover: 1px solid #fff;
-    &:hover {
-        --border-hover: 1px solid white;
-    }
 }
 
 [data-theme-input-border="white"] { --input-border: 1px solid rgba(0, 0, 0, 0.30);}
