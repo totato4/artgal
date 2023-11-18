@@ -1,9 +1,13 @@
 .filters {
+  // display: flex;
+  // gap: 15px 20px;
+  // flex-wrap: nowrap;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   gap: 15px 20px;
   width: 100%;
+  
 }
 
 @media (min-width: 0px) {
