@@ -1,4 +1,5 @@
 import { useAppSelector } from 'RTK/store';
+
 import Home from 'pages/Home';
 import style from './App.module.scss';
 

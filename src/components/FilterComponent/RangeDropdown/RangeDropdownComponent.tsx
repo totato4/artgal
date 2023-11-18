@@ -21,8 +21,8 @@ export const RangeDropdownComponent: FC<Props> = () => {
   const endQuery =
     searchParams.get('lte') == null ? '' : searchParams.get('lte');
 
-  const [startVal, setStartVal] = useState<any>(startQuery);
-  const [endVal, setEndVal] = useState<any>(endQuery);
+  const [startVal, setStartVal] = useState<string>(startQuery || '');
+  const [endVal, setEndVal] = useState<string>(endQuery || '');
   const debouncedSearchStart = useDebounce<string | null>(startVal, 400);
   const debouncedSearchEnd = useDebounce<string | null>(endVal, 400);
   //
@@ -42,13 +42,6 @@ export const RangeDropdownComponent: FC<Props> = () => {
     setOpen(false);
   };
   //
-
-  const handleOnChangeStart = (value: any) => {
-    setStartVal(value);
-  };
-  const handleOnChangeEnd = (value: any) => {
-    setEndVal(value);
-  };
 
   useEffect(() => {
     // @ts-ignore
@@ -111,11 +104,7 @@ export const RangeDropdownComponent: FC<Props> = () => {
       {open && (
         <Popup>
           <ul className={style.List}>
-            <Input
-              placeholder="for"
-              val={startVal}
-              setValue={handleOnChangeStart}
-            />
+            <Input placeholder="for" val={startVal} setValue={setStartVal} />
             <div
               className="line"
               style={{
@@ -124,11 +113,7 @@ export const RangeDropdownComponent: FC<Props> = () => {
                 backgroundColor: `${theme === 'dark' ? 'white' : 'black'}`,
               }}
             />
-            <Input
-              placeholder="before"
-              val={endVal}
-              setValue={handleOnChangeEnd}
-            />
+            <Input placeholder="before" val={endVal} setValue={setEndVal} />
           </ul>
         </Popup>
       )}

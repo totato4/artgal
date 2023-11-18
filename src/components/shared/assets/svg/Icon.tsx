@@ -9,7 +9,8 @@ type Props = {
     | 'double-right-array'
     | 'cross'
     | 'arrow-top'
-    | 'frame';
+    | 'frame'
+    | 'Logo';
   className?: any;
 };
 

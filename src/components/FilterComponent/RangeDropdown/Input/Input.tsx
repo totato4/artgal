@@ -3,8 +3,8 @@ import { useAppSelector } from 'hooks/useRedux';
 import style from './Input.module.scss';
 
 type Props = {
-  val?: any;
-  setValue?: any;
+  val?: string;
+  setValue?: React.Dispatch<React.SetStateAction<string>>;
   urlParam?: string;
   handleChange?: any;
 } & React.InputHTMLAttributes<HTMLInputElement>;

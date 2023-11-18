@@ -2,10 +2,10 @@ import { FC } from 'react';
 import style from './Item.module.scss';
 
 type Props = {
-  name?: string | number;
-  author?: string | number;
+  name?: string;
+  author?: string;
   created?: string | number;
-  location?: string | number;
+  location?: string;
 };
 
 const Item: FC<Props> = ({ author, created, location, name }) => {

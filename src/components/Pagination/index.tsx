@@ -31,14 +31,13 @@ const PaginationComponent = () => {
               : style.paginationThemeWhite
           } ${style.pagination} ${style.btn}`}
         >
-          <div role="none" onClick={() => onChangePage(1)}>
-            <Button
-              borderRadius="8px 0px 0px 8px"
-              disabled={currentPage === 1 ? true : false}
-            >
-              <Icon id="double-left-array" className="svg-hover" />
-            </Button>
-          </div>
+          <Button
+            borderRadius="8px 0px 0px 8px"
+            disabled={currentPage === 1 ? true : false}
+            onClick={() => onChangePage(1)}
+          >
+            <Icon id="double-left-array" className="svg-hover" />
+          </Button>
 
           <ReactPaginate
             activeClassName={`${
@@ -64,14 +63,14 @@ const PaginationComponent = () => {
             renderOnZeroPageCount={null}
           />
 
-          <div role="button" onClick={() => onChangePage(countPages)}>
-            <Button
-              borderRadius="0px 8px 8px 0px"
-              disabled={currentPage === countPages ? true : false}
-            >
-              <Icon id="double-right-array" className="svg-hover" />
-            </Button>
-          </div>
+          <Button
+            role="button"
+            borderRadius="0px 8px 8px 0px"
+            disabled={currentPage === countPages ? true : false}
+            onClick={() => onChangePage(countPages)}
+          >
+            <Icon id="double-right-array" className="svg-hover" />
+          </Button>
         </div>
       )}
     </div>

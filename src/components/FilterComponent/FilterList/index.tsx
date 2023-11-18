@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import style from './FilterList.module.scss';
 
 type Props = {
-  children: any;
+  children: ReactNode;
 };
 
 const FilterList: FC<Props> = ({ children }) => (

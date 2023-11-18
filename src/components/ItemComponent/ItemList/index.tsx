@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import style from './itemList.module.scss';
 
 interface Props {
-  children: any;
+  children: ReactNode;
 }
 
 const ItemList: FC<Props> = ({ children }) => {

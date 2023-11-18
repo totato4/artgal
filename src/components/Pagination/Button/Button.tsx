@@ -3,9 +3,9 @@ import { useAppSelector } from 'hooks/useRedux';
 import style from './Button.module.scss';
 
 type Props = {
-  children?: ReactNode;
+  children: ReactNode | string;
   borderRadius?: string;
-  onClick?: any;
+  onClick?: () => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<Props> = ({

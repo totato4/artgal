@@ -1,7 +1,7 @@
 import { useState, useRef, FC, useEffect } from 'react';
-
 import { useSearchParams } from 'react-router-dom';
 import { useOnClickOutside } from 'usehooks-ts';
+
 import { Icon } from 'components/shared/assets/svg/Icon';
 import style from './Dropdown.module.scss';
 import { DropdownItem } from './DropdownItem/DropdownItem';
@@ -97,7 +97,6 @@ const Dropdown: FC<Props> = ({ filter, children }) => {
         <Popup>
           {children.map((obj: any) => (
             <DropdownItem
-              setValue={filterValue}
               name={obj.name}
               id={obj.id}
               key={obj.name + obj.id}

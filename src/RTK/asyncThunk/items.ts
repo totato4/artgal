@@ -83,7 +83,7 @@ export const fetchItems = createAsyncThunk<any, ParamsProps>(
 const initialState: IitemsSliceState = {
   items: [],
   authorId: '',
-  countPages: 10,
+  countPages: 0,
   currentPage: 1,
   status: Status.LOADING,
 };

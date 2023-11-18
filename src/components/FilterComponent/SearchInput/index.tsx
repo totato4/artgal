@@ -6,9 +6,10 @@ import style from './SearchInput.module.scss';
 
 const SearchInput = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('q') == null ? '' : searchParams.get('q');
-  // @ts-ignore
-  const [value, setValue] = useState<string>(query);
+  const query = searchParams.get('q');
+  // const query = searchParams.get('q') == null ? '' : searchParams.get('q');
+
+  const [value, setValue] = useState<string>(query || '');
 
   const debouncedValue = useDebounce<string>(value, 400);
 

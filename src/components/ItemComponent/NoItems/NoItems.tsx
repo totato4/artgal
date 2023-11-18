@@ -1,4 +1,6 @@
-const NoItems: any = ({ children }: any) => {
+import { ReactNode } from 'react';
+
+const NoItems = ({ children }: { children: ReactNode }) => {
   return (
     <div
       style={{

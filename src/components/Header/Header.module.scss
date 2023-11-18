@@ -1,28 +1,27 @@
 .header {
-    max-width: 1120px;
-    width: 100%;
-    padding: 12px 0 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 34px;
+  max-width: 1120px;
+  width: 100%;
+  padding: 12px 0 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 34px;
 }
 
 .logo {
-    width: 67px;
-    height: 67px;
-    margin-right: auto;
-    user-select: none;
+  width: 68px;
+  height: 68px;
+  margin-right: auto;
+  user-select: none;
 }
 
 .frame {
-    width: 20px;
-    height: 20px;
-    
+  width: 20px;
+  height: 20px;
 }
 
 .frameWrapper {
-    user-select: none;
-    width: 20px;
-    height: 20px;
+  user-select: none;
+  width: 20px;
+  height: 20px;
 }
