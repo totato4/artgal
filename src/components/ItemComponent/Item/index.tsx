@@ -16,7 +16,7 @@ const Item: FC<Props> = ({ author, created, location, name, imageUrl }) => {
         <img
           // src="./src/components/shared/assets/picture.jpg"
           src={`${imageUrl}`}
-          alt="artPicture"
+          alt={`artpicture ${name}`}
           className={style.img}
         />
       </div>
