@@ -104,7 +104,12 @@ export const RangeDropdownComponent: FC<Props> = () => {
       {open && (
         <Popup>
           <ul className={style.List}>
-            <Input placeholder="for" val={startVal} setValue={setStartVal} />
+            <Input
+              placeholder="for"
+              val={startVal}
+              setValue={setStartVal}
+              aria-label="input created for"
+            />
             <div
               className="line"
               style={{
@@ -113,7 +118,12 @@ export const RangeDropdownComponent: FC<Props> = () => {
                 backgroundColor: `${theme === 'dark' ? 'white' : 'black'}`,
               }}
             />
-            <Input placeholder="before" val={endVal} setValue={setEndVal} />
+            <Input
+              placeholder="before"
+              val={endVal}
+              setValue={setEndVal}
+              aria-label="input created before"
+            />
           </ul>
         </Popup>
       )}
