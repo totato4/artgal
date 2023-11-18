@@ -20,6 +20,7 @@ const ItemComponent = () => {
                   author={o.author}
                   created={o.created}
                   location={o.location}
+                  imageUrl={o.imageUrl}
                   key={o.name + o.created}
                 />
               ))}

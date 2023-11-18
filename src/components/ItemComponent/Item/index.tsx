@@ -6,15 +6,16 @@ type Props = {
   author?: string;
   created?: string | number;
   location?: string;
+  imageUrl?: string;
 };
 
-const Item: FC<Props> = ({ author, created, location, name }) => {
+const Item: FC<Props> = ({ author, created, location, name, imageUrl }) => {
   return (
     <div className={style.container}>
-      <div>
+      <div className={style.imgWrapper}>
         <img
           // src="./src/components/shared/assets/picture.jpg"
-          src="./picture.jpg"
+          src={`${imageUrl}`}
           alt="artPicture"
           className={style.img}
         />
