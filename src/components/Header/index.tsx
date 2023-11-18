@@ -18,9 +18,13 @@ const index = () => {
   return (
     <header className={style.header}>
       <img className={style.Logo} src={Logo} alt="Logo" />
-      <div className={style.frameWrapper} onClick={() => switchTheme()}>
+      <button
+        type="button"
+        className={style.frameWrapper}
+        onClick={() => switchTheme()}
+      >
         <Icon id="frame" className="frame" />
-      </div>
+      </button>
     </header>
   );
 };
