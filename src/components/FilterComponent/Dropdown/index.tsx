@@ -8,9 +8,14 @@ import { DropdownItem } from './DropdownItem/DropdownItem';
 
 import { Popup } from './Popup/Popup';
 
+type IChildren = {
+  name: string;
+  id: number;
+};
+
 type Props = {
-  filter: string | boolean;
-  children: object[];
+  filter: string;
+  children: IChildren[];
 };
 
 const Dropdown: FC<Props> = ({ filter, children }) => {
@@ -23,10 +28,12 @@ const Dropdown: FC<Props> = ({ filter, children }) => {
   // --------------------Routing----------------------------- //
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const getParam = searchParams.get(`${filter}`);
+  const { name } = children.find((o) => o.id === Number(getParam)) ?? {
+    name: undefined,
+  };
 
-  const [filterValue, setFilterValue] = useState<
-    string | boolean | null | number
-  >(filter);
+  const [filterValue, setFilterValue] = useState<string>(name ?? filter);
 
   const onChangeFilter = (name: string, id?: number) => {
     setFilterValue(name);
